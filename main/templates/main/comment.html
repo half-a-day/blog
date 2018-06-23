@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+<div class="widewrapper main">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3 clean-superblock" id="contact">
+
+				<form  method="post" class="comment-form">
+{% csrf_token %}
+<div class="row">
+<div class="col-md-4">
+<label for="{{ form.name.id_for_label }}">名字：</label>
+{{ form.name }}
+{{ form.name.errors }}
+</div>
+
+<button type="submit" class="comment-btn">发表</button>
+</div>
+</div> <!-- row -->
+</form>
+
+
+            	<h3>留言列表 </h3>
+            	{% for comment in comment_list %}
+				<li class="comment-item">
+				<span class="nickname">{{ comment.name }}</span>
+				<time class="submit-date">{{ comment.created_time }}</time>
+				<div class="text">
+				{{ comment.text }}
+				</div>
+				</li>
+				{% empty %}
+				暂无评论
+				{% endfor %}
+				</ul>
+                <h2>Contact</h2>
+                
+                <form action="#" method="get" accept-charset="utf-8" class="contact-form">
+                    <input type="text" name="name" id="contact-name" placeholder="Name" class="form-control input-lg">
+                    <input type="email" name="email" id="contact-email" placeholder="Email" class="form-control input-lg">
+                    <textarea rows="10" name="message" id="contact-body" placeholder="Your Message" class="form-control input-lg"></textarea>
+                    <div class="buttons clearfix">
+                        <button type="submit" class="btn btn-xlarge btn-clean-one">Submit</button>
+                    </div>                    
+                </form>
+            </div>
+        </div>        
+    </div>
+</div>
+{% endblock %}
+
+{% block aside %}
+{% endblock %}

@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+
+{% block nav %}
+
+<span class="separator">&#x2F;</span>
+<span class="current"> 共&nbsp{{paginator.num_pages}}&nbsp页</span>
+<span class="separator">&#x2F;</span>
+<span class="current"> 第 &nbsp{{ page_obj.number }}&nbsp页</span>
+
+{% endblock %}
+
+
+
+{% block content %}
+{% for post in post_list %}
+<div class="col-md-6 col-sm-6">
+    <article class=" blog-teaser">
+        <header>
+            <img src="img/1.jpg" alt="">
+            <h3><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h3>
+            <span class="meta">{{ post.created_time }}&nbsp&nbsp&nbsp{{ post.views }} 阅读</span>
+            <hr>
+        </header>
+        <div class="body">
+            {{ post.excerpt }}
+        </div>
+        <div class="clearfix">
+            <a href="{{ post.get_absolute_url }}" class="btn btn-clean-one">Read more</a>
+        </div>
+    </article>
+</div>
+{% endfor %}
+{% endblock %}
+
+
+{% block footer %}
+<div class="widewrapper footer">
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 footer-widget">
+            <h3> <i class="fa fa-user"></i>About</h3>
+           <p>被骑单车耽误的码农</p>
+           <p>记录下学习过程</p>
+           <p>已教促学</p>
+
+        </div>
+
+        <div class="col-md-4 footer-widget">
+            <h3> <i class="fa fa-pencil"></i> 友链</h3>
+            <ul class="clean-list">
+                <li><a href="/">BanDay</a></li>
+            </ul>
+        </div>
+
+        <div class="col-md-4 footer-widget">
+            <h3> <i class="fa fa-envelope"></i>Contact Me</h3>
+
+            <p></p>
+             <div class="footer-widget-icon">
+                <i class="fa fa-github"></i>
+            </div>
+        </div>
+       
+    </div>
+</div>
+</div>
+
+
+
+{% endblock %}
